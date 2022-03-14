@@ -1,11 +1,11 @@
-from minor_leagues import to_tsv
+from gen_premajldraft_minor_league_list import to_tsv
 from players import get_all_os_rostered_players, get_draft_results
 
 
 def generate_keeper_list():
     """For this we need
-        1. [year]-majl-draft-results.csv (the results of the draft which includes the round each player was drafted)
-        2. [year]-majl-owned-players.csv (the end of year owned players)
+        1. data/[year]/majl-draft-results.csv (the results of the draft which includes the round each player was drafted)
+        2. data/[year]/majl-owned-players.csv (the end of year owned players)
     """
     next_years_round = {1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 3, 7: 4, 8: 4, 9: 5, 10: 5, 11: 6, 12: 7, 13: 7, 14: 8, 15: 9,
                         16: 10, 17: 10, 18: 11, 19: 12, 20: 13, 21: 17, 22: 17, 23: 17, 24: 17}
@@ -19,7 +19,6 @@ def generate_keeper_list():
 
     out.sort(key=lambda r: r[6])
     out.sort(key=lambda r: r[4])
-    #print(out)
     to_tsv("2021_keepers.tsv", out)
 
 

@@ -1,3 +1,14 @@
+"""
+Set config/year
+
+Generating beginning of the year minor league list
+    - Create a tsv in data/[year]/prev-year-minl-players.tsv with no header row (see data-exmaples/minl-players)
+    - We insert the players into the db with insert_minl_players_from_file
+    - We run the current list through get bbref_urls so each minor leaguer has a bbref url
+    - We run that list through get_bbref_pages so each minor leaguer has a bbref page
+    - We run that through get_rookie_status, get_bbref_team, and get_birth_year to fill in the player's data
+    - We run output_preseason_list
+"""
 import csv
 import time
 import traceback
@@ -182,7 +193,6 @@ def output_preseason_list():
     out = []
     for player in players:
         out.append(player.to_array())
-    #print(out)
     to_tsv(year + "-minl-players.tsv", out, folder="out")
 
 
@@ -196,16 +206,5 @@ def output_preseason_list():
 # get_rookie_status()
 # get_bbref_team()
 # get_birth_year()
-output_preseason_list()
+# output_preseason_list()
 
-"""
-For all operations, set config/year
-
-Generating beginning of the year minor league list
-    - Create a tsv in data/[year]/minl_players.tsv with no header row
-    - We insert the players into the db with insert_minl_players_from_file
-    - We run the current list through get bbref_urls so each minor leaguer has a bbref url
-    - We run that list through get_bbref_pages so each minor leaguer has a bbref page
-    - We run that through get_rookie_status, get_bbref_team, and get_birth_year to fill in the player's data
-    - We run output_preseason_list
-"""

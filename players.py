@@ -120,7 +120,7 @@ def get_all_os_rostered_players():
 def get_minl_players_from_file():
     """ this represents a list of current minor league players"""
     players = []
-    with open("data/" + year + "/minl-players.tsv", "r") as read_obj:
+    with open("data/" + year + "/prev-year-minl-players.tsv", "r") as read_obj:
         csv_reader = reader(read_obj, delimiter="\t")
         #next(csv_reader, None) # only if there is a header row
         list_of_rows = list(csv_reader)
