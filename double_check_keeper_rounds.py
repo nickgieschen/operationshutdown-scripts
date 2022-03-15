@@ -4,8 +4,10 @@ from config import year
 
 
 def get_submitted_keepers():
-    """ This represents all players in Fantrax, rostered or not"""
-    players = []
+    """
+    Returns [(Team1Name, [player1, player2]), (Team2Name, [player1, player2])...]
+    :return:
+    """
     with open(f"data/{year}/submitted-keepers.tsv", "r") as read_obj:
         csv_reader = reader(read_obj, delimiter="\t")
         rows = list(csv_reader)
